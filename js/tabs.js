@@ -1,39 +1,43 @@
-const tabButtons = document.querySelectorAll('.design-list__item');
-const tabDescriptions = document.querySelectorAll('.design__descr');
-const tabImages = document.querySelectorAll('.design-images');
-const blockImages = document.querySelectorAll('.design-block__img');
-const tabTitle = document.querySelector('.design__title');
-const tabHeader = document.querySelector('title');
+const TubButton = document.querySelectorAll(".design-list__item");
+const TubDescription = document.querySelectorAll(".design__descr");
+const TubImages = document.querySelectorAll(".design-images");
+const TubBlock = document.querySelectorAll(".design-block__img");
 
-tabHeader.innerHTML = tabTitle.innerHTML;
 
-const changeContent = (array, value) => {
-    array.forEach((elem) => {
-        if (elem.dataset.tabsField === value) {
-            elem.classList.remove('hidden');
-        } else {
-            elem.classList.add('hidden');
-        }
-    });
-};
+TubButton.forEach((element, index) => {
+    element.addEventListener("click", () => {
 
-tabButtons.forEach((tabButton) => {
-    tabButton.addEventListener("click", (event) => {
-        
-        const dataValue = tabButton.dataset.tabsHandler;
-
-        changeContent(tabImages, dataValue);
-        changeContent(tabDescriptions, dataValue);
-        changeContent(blockImages, dataValue);
-        
-        tabButtons.forEach((btn) => {
-            if (btn === event.target) {
-                btn.classList.add('design-list__item_active');
+        TubDescription.forEach((descr, index_descr) => {
+            if (index === index_descr) {
+                descr.classList.remove("hidden")
             } else {
-                btn.classList.remove('design-list__item_active');
+                descr.classList.add("hidden")
+            }
+        })
+
+        TubImages.forEach((images, index_images) => {
+            if (index === index_images) {
+                images.classList.remove("hidden")
+            } else {
+                images.classList.add("hidden")
+            }
+        })
+
+        TubBlock.forEach((block, index_block) => {
+            if (index === index_block) {
+                block.classList.remove("hidden")
+            } else {
+                block.classList.add("hidden")
+            }
+        })
+
+
+        TubButton.forEach((btn) => {
+            if (element === btn) {
+                btn.classList.add("design-list__item_active");
+            } else {
+                btn.classList.remove("design-list__item_active");
             }
         })
     })
 })
-
-
